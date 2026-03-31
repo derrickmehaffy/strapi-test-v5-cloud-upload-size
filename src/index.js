@@ -16,5 +16,11 @@ module.exports = {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap(/*{ strapi }*/) {},
+  bootstrap({ strapi }) {
+    const uploadConfig = strapi.config.get('plugin::upload');
+    strapi.log.info(`[debug] Upload plugin config: ${JSON.stringify(uploadConfig, null, 2)}`);
+
+    const middlewares = strapi.config.get('middlewares');
+    strapi.log.info(`[debug] Middlewares config: ${JSON.stringify(middlewares, null, 2)}`);
+  },
 };
